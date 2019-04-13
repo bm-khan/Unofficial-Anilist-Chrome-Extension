@@ -1,8 +1,12 @@
 # Unofficial Anilist Updater Chrome Extension
 
+## Download on the Chrome webstore
+https://chrome.google.com/webstore/detail/ggjlaakenonjlionbnebgnnolhmplbje/
+
 ## How to set up
-Since I'm too lazy to actually complete this thing and put it up on the Chrome Web Store, you'll have to deal with setting this up locally, which means you'll have to set up your own client application on Anilist, and install an unpacked Chrome extension
-To do that, you need to get a clientId, and to do that you need to set up the chrome extension locally.
+If you want to customize the application, you'll have to deal with setting this up locally, which means you'll have to set up your own client application on Anilist, and load an unpacked Chrome extension.
+To set up the client app, you'll need to get a redirect URL from the Chrome extension.
+Then to log in to Anilist, you'll need to get your app's clientId.
 
 ### Installing the Chrome extension:
   - Download the repository and unzip the download somewhere
