@@ -1,4 +1,4 @@
-# Unofficial Anilist Update Chrome Extension
+# Unofficial Anilist Updater Chrome Extension
 
 ## How to set up
 Since I'm too lazy to actually complete this thing and put it up on the Chrome Web Store, you'll have to deal with setting this up locally, which means you'll have to set up your own client application on Anilist, and install an unpacked Chrome extension
