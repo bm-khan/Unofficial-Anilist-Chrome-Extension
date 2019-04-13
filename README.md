@@ -10,7 +10,7 @@ To do that, you need to get a clientId, and to do that you need to set up the ch
   - Click 'Load unpacked'
   - Select the folder that you unzipped
   - Go to the Anilist Updater in your extensions and click 'Details'
-  - Copy the ID string, this will be part of you client ID when setting up the API client on Anilist
+  - Copy the ID string, this will be part of your client ID when setting up the API client on Anilist
   
 ### Setting up an API client on Anilist  
   - Head to https://anilist.co/settings/developer
