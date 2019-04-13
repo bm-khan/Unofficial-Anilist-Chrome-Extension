@@ -22,8 +22,6 @@ var headers = {
 var fullList = [];
 var displayedList = [];
 var displayedType = "ANIME";
-// var watching = [];
-// var aitingWatching = [];
 var display = doc.getElementById("display");
 const COLUMNS = 4;
 const thumbHeight = 130;
@@ -31,12 +29,9 @@ const thumbWidth = 100;
 
 var logIn = doc.getElementById("logIn");
 logIn.addEventListener('click', function() {
-  console.log("launching web auth flow");
   chrome.identity.launchWebAuthFlow({url: webAuthUrl, interactive: true}, function(redirectUrl) {
-    console.log(redirectUrl);
     //parse token from here
     let access_token = redirectUrl.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
-    console.log("token: ", access_token);
     token = access_token;
     storage.set({[NAMESPACES.token]: token});
     headers['Authorization'] = 'Bearer ' + token;
@@ -50,11 +45,9 @@ logIn.addEventListener('click', function() {
       }`;
 
       let options = getOptions(query);
-      console.log(options);
       fetch(SERVICE_URL, options)
         .then(handleResponse)
         .then(function(response) {
-          console.log(response)
           userId = response.data.Viewer.id;
           storage.set({[NAMESPACES.userId]: userId});
           logIn.style.display = "none";
@@ -140,7 +133,6 @@ async function getWatching() {
   await fetch(SERVICE_URL, getOptions(query, variables))
     .then(handleResponse)
     .then(function(data) {
-      console.log("fetched", data);
       watchingList = data.data.MediaListCollection.lists[0].entries;
     }).catch(handleError);
   return watchingList;
@@ -160,7 +152,6 @@ function handleError(error) {
 function updateImages() {
   display.innerHTML = '<tbody></tbody>';
   let displayBody = display.tBodies[0];
-  console.log("UPDATE IMAGES");
   if (displayedList === undefined || displayedList.length === 0) {
     let noItems = doc.createElement('H5');
     let text = doc.createTextNode("Doesn't look like anythings here, are you logged in?");
@@ -241,14 +232,10 @@ function mediaClick(mediaList, i) {
       let containerRect = e.target.getBoundingClientRect();
       let x = e.clientX - containerRect.left;
       let y = e.clientY - containerRect.top;
-      console.log(x, y);
-      console.log(mediaList.media.title.romaji, x < (thumbWidth/2) ? "left" : "right");
       progress = mediaList.progress + (x <= (thumbWidth/2) ? -1 : 1); //Click left, decrement, right, incremenet
     } else {
       progress = mediaList.progress + i;
-      console.log("oho");
     }
-    console.log("prog: ", mediaList.progress, "new", progress);
     let query = `
       mutation ($id: Int, $progress: Int) {
         SaveMediaListEntry (id: $id, progress: $progress) {
@@ -263,7 +250,6 @@ function mediaClick(mediaList, i) {
     };
     let options = getOptions(query, variables);
     fetch(SERVICE_URL, options).then(handleResponse).then(function (data) {
-      console.log(data);
       mediaList.progress = data.data.SaveMediaListEntry.progress
       doc.getElementById(`prog-${mediaList.id}`).innerText = `${mediaList.progress}/${mediaList.media.episodes}`;
     }).catch(handleError);
@@ -281,11 +267,8 @@ function searchList(e) {
   e.preventDefault();
   let query = searchInput.value;
   if (query) {
-    console.log(typeof(query));
     query = query.toUpperCase();
     displayedList = fullList.filter(function(mediaList) {
-      console.log(mediaList);
-      console.log(mediaList.media.title.romaji, mediaList.media.title.english);
       let romaji = mediaList.media.title.romaji || "";
       let english = mediaList.media.title.english || "";
       return romaji.toUpperCase().includes(query) || english.toUpperCase().includes(query);
@@ -313,11 +296,9 @@ storage.get([NAMESPACES.token, NAMESPACES.userId, NAMESPACES.type], async functi
   } else {
     displayedType = "ANIME"; // default type
   }
-  console.log("token retrieved: ", result.token);
   token = result.token;
   headers['Authorization'] = 'Bearer ' + token;
 
-  console.log("User id retrieved: ", result.userId);
   userId = result.userId;
   if (token && userId) {
     logIn.style.display = "none";
@@ -325,18 +306,4 @@ storage.get([NAMESPACES.token, NAMESPACES.userId, NAMESPACES.type], async functi
     logOut.style.display = "none";
   }
   refreshList();
-  // if (userId && token) {
-  //   let watching = await getWatching();
-  //   console.log("Watching: ",  watching);
-  //   let airing = [];
-  //   watching.forEach(mediaList => {
-  //     if (mediaList.media.status === "RELEASING") {
-  //       airing.push(mediaList);
-  //       console.log(mediaList.media.coverImage.medium);
-  //     }
-  //   });
-  //   // displayedList = airing;  //Set this if you want airing
-  //   displayedList = watching;   //Set this if you want airing or watching
-  // }
-  // updateImages();
 });
