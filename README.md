@@ -1,6 +1,6 @@
 # Unofficial Anilist Updater Chrome Extension
 
-## Download on the Chrome webstore
+## Download now!
 https://chrome.google.com/webstore/detail/ggjlaakenonjlionbnebgnnolhmplbje/
 
 ## How to set up
