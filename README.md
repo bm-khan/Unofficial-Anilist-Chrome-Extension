@@ -36,7 +36,7 @@ With that, the application should be ready to use.
   - Volumes for manga list items (including light novels) aren't supported, only chapters are shown
   - If the total number of chapters/episodes isn't finalized on Anilist (for currently releasing media) a '?' is shown instead
   - Sometimes things like episode numbers and images will load/update slowly
-  - The Chrome extension only shows items that you have listed as watching/reading on Anilist, If you complete something, it will dissappear from the menu when you reload it
-  - Adding items/removing items to your list isnt supported, only updating your watching/reading lists
+  - The Chrome extension only shows items that you have listed as watching/reading on Anilist, if you complete something, it will dissappear from the menu when you reload it
+  - Adding items/removing items to your list isn't supported, only updating your watching/reading lists
   - Changing the progress number directly is not yet supported
   
