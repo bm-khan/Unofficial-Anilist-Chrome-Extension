@@ -24,8 +24,10 @@ To do that, you need to get a clientId, and to do that you need to set up the ch
 With that, the application should be ready to use.
 
 ## Use
-  - 'Log in' will open up the OAuth2 flow for Anilist, to authorize the application you can revoke this application's access to your accounts by going to https://anilist.co/settings/apps and revoking the application
-  - 'Refresh display' will simply refresh whatever content the app is display
-  - 'Toggle' will switch from displaying your anime list to your manga list
-  - 'Search' will display whatever content on the list matches your search, as of now, only querying for the English and Romaji titles of media is supported
+  - Click the Anilist Updater icon in your toolbar to open the pop-up
+  - 'Log in' will open a log in prompt for Anilist so the Chrome extension can access your lists. You can revoke this application's access to your account by going to https://anilist.co/settings/apps and revoking the application
+  - 'Log out' will remove your token from storage and log you out
+  - 'Refresh display' will simply refresh whatever content the app is displaying, handy if you think something went wrong
+  - 'Toggle' will switch from displaying your anime list or your manga list
+  - 'Search' will display whatever content on your list matches your search. As of now, only querying for the English and Romaji titles of media is supported
   - Click the '-' or '+' buttons to increment progress for a title
