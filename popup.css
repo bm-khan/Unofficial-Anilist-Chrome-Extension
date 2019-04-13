@@ -1,0 +1,40 @@
+body {
+  vertical-align: middle;
+  background-color: #9ec3ff;
+  width: 420px;
+  /* height: 500px; */
+}
+
+/* .table {
+  display: table;
+} */
+
+/* .column {
+  display: table-column;
+} */
+
+.cell {
+  display: table-cell;
+  height: 140px;
+  width: 100px;
+  border: 3px solid black;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.centerText {
+  width:100%;
+  text-align:center;
+}
+
+form {
+  display: inline-block;
+}
