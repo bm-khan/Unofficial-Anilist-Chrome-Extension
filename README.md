@@ -9,7 +9,7 @@ To do that, you need to get a clientId, and to do that you need to set up the ch
   - Head to chrome://extensions/
   - Click 'Load unpacked'
   - Select the folder that you unzipped
-  - Go to 'UNOFFICIAL Anilist Updater' under your extensions and click details
+  - Go to the Anilist Updater in your extensions and click 'Details'
   - Copy the ID string, this will be part of you client ID when setting up the API client on Anilist
   
 ### Setting up an API client on Anilist  
