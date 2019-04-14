@@ -154,7 +154,8 @@ function updateImages() {
   let displayBody = display.tBodies[0];
   if (displayedList === undefined || displayedList.length === 0) {
     let noItems = doc.createElement('H5');
-    let text = doc.createTextNode("Doesn't look like anythings here, are you logged in?");
+    let textString = token ? `Doesn't look like theres anything here, remember to add entries to your lists at anilist.co first` : `Doesn't look like you're logged in yet`;
+    let text = doc.createTextNode(textString);
     noItems.appendChild(text);
     display.appendChild(noItems);
   }
@@ -251,7 +252,13 @@ function mediaClick(mediaList, i) {
     let options = getOptions(query, variables);
     fetch(SERVICE_URL, options).then(handleResponse).then(function (data) {
       mediaList.progress = data.data.SaveMediaListEntry.progress
-      doc.getElementById(`prog-${mediaList.id}`).innerText = `${mediaList.progress}/${mediaList.media.episodes}`;
+      let totalEpisodes;
+      if (displayedType === "MANGA") {
+        totalEpisodes = mediaList.media.chapters || '';
+      } else {
+        totalEpisodes = mediaList.media.episodes || '';
+      }
+      doc.getElementById(`prog-${mediaList.id}`).innerText = `${mediaList.progress}/${totalEpisodes || "?"}`;
     }).catch(handleError);
 
   }
@@ -259,6 +266,7 @@ function mediaClick(mediaList, i) {
 
 async function toggleList() {
   displayedType = displayedType === "ANIME" ? "MANGA" : "ANIME";
+  doc.getElementById('listType').innerHTML = displayedType;
   storage.set({[NAMESPACES.type]: displayedType});
   refreshList();
 }
@@ -280,9 +288,6 @@ function searchList(e) {
   }
 }
 
-var refresh = doc.getElementById("refreshDisplay");
-refresh.addEventListener('click', updateImages);
-
 var toggle = doc.getElementById("toggle");
 toggle.addEventListener('click', toggleList);
 
@@ -296,6 +301,7 @@ storage.get([NAMESPACES.token, NAMESPACES.userId, NAMESPACES.type], async functi
   } else {
     displayedType = "ANIME"; // default type
   }
+  doc.getElementById('listType').innerHTML = displayedType;
   token = result.token;
   headers['Authorization'] = 'Bearer ' + token;
 

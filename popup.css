@@ -5,14 +5,6 @@ body {
   /* height: 500px; */
 }
 
-/* .table {
-  display: table;
-} */
-
-/* .column {
-  display: table-column;
-} */
-
 .cell {
   display: table-cell;
   height: 140px;
@@ -37,4 +29,9 @@ table {
 
 form {
   display: inline-block;
+}
+
+.textDisplay {
+  display:inline-block;
+  font-weight:bold;
 }
