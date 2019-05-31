@@ -1,3 +1,8 @@
+html {
+  font-family: "Verdana";
+  font-size: 12px;
+}
+
 body {
   vertical-align: middle;
   background-color: #9ec3ff;
@@ -38,4 +43,20 @@ form {
 
 .topBar {
   margin-bottom: 5px;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+button {
+    padding: 0;
+}
+
+input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+input {
+    padding: 0;
 }

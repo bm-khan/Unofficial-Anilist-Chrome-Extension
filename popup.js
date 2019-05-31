@@ -29,7 +29,7 @@ const thumbWidth = 100;
 
 var logIn = doc.getElementById("logIn");
 logIn.addEventListener('click', function() {
-  chrome.identity.launchWebAuthFlow({url: webAuthUrl, interactive: true}, function(redirectUrl) {
+  browser.identity.launchWebAuthFlow({url: webAuthUrl, interactive: true}).then(function(redirectUrl) {
     //parse token from here
     let access_token = redirectUrl.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
     token = access_token;
@@ -56,7 +56,7 @@ logIn.addEventListener('click', function() {
         })
         .catch(handleError);
     }
-  });
+  })
 })
 
 var logOut = doc.getElementById("logout");
