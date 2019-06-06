@@ -2,6 +2,7 @@
 Also available in *Firefox*
 ## Download now!
 https://chrome.google.com/webstore/detail/ggjlaakenonjlionbnebgnnolhmplbje/
+
 https://addons.mozilla.org/en-US/firefox/addon/unofficial-anilist-updater/
 
 ## How to set up
