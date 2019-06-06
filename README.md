@@ -1,5 +1,9 @@
 # Unofficial Anilist Updater Chrome Extension
-Also available in *Firefox*
+Also available for Firefox!
+
+The [master] branch will continue as the Chrome version source code.
+
+For Firefox version source code, please see the [firefox] branch.
 ## Download now!
 https://chrome.google.com/webstore/detail/ggjlaakenonjlionbnebgnnolhmplbje/
 
