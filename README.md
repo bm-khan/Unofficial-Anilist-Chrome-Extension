@@ -1,7 +1,8 @@
 # Unofficial Anilist Updater Chrome Extension
-
+Also available in *Firefox*
 ## Download now!
 https://chrome.google.com/webstore/detail/ggjlaakenonjlionbnebgnnolhmplbje/
+https://addons.mozilla.org/en-US/firefox/addon/unofficial-anilist-updater/
 
 ## How to set up
 If you want to customize the application, you'll have to deal with setting this up locally, which means you'll have to set up your own client application on Anilist, and load an unpacked Chrome extension.
